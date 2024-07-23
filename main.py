@@ -43,7 +43,7 @@ def main():
             display_books()
         elif choice == '5':
             id = int(input("Введите ID книги для изменения статуса: "))
-            new_status = input("Введите новый статус ('in stock' или 'issued'): ")
+            new_status = input("Введите новый статус ('в наличии' или 'выдана'): ")
             change_status(id, new_status)
         elif choice == '0':
             break
