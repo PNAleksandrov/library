@@ -25,13 +25,13 @@ class TestLibrary(unittest.TestCase):
         loaded_books = load_books_from_file()
         self.assertEqual(len(loaded_books), 3)
 
-    def test_delete_book(self):
-        initial_count = len(load_books_from_file())
-        delete_book(initial_count)
-        updated_count = len(load_books_from_file())
-        self.assertEqual(updated_count, initial_count - 1)
-        with self.assertRaises(IndexError):
-            deleted_book = load_books_from_file()[initial_count - 1]
+    def test_change_status(self):
+        book = load_books_from_file()[0]
+        old_status = book.status
+        change_status(book.id, "выдана")
+        updated_book = load_books_from_file()[0]
+        self.assertNotEqual(old_status, updated_book.status)
+        self.assertEqual(updated_book.status, "выдана")
 
     def test_find_books(self):
         result = find_books("Преступление и наказание")
