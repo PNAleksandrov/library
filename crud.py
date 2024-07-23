@@ -33,7 +33,7 @@ def add_book(title: str, author: str, year: int) -> None:
     """
     books = load_books_from_file()
     new_id = len(books) + 1 if not books else max([book.id for book in books]) + 1
-    book = Book(new_id, title, author, year, "in stock")
+    book = Book(new_id, title, author, year, "в наличии")
     books.append(book)
     save_books_to_file(books)
 
@@ -45,6 +45,10 @@ def delete_book(id: str) -> None:
     """
     books = load_books_from_file()
     books = [book for book in books if book.id != id]
+    book_index = next((index for index, book in enumerate(books) if book.id == id), None)
+    if book_index is None:
+        raise ValueError(f"Книга с ID {id} не найдена.")
+    del books[book_index]
     save_books_to_file(books)
 
 
@@ -69,7 +73,7 @@ def display_books() -> None:
 
 def change_status(id: str, new_status: str) -> None:
     """
-    Меняет статус книги по ID: статус "in stock(в наличии)" и "issue(выдана)"
+    Меняет статус книги по ID: статус "в наличии" и "выдана"
     """
     books = load_books_from_file()
     for book in books:

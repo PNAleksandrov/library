@@ -16,13 +16,14 @@ class TestLibrary(unittest.TestCase):
     def setUp(self):
         self.books = [
             Book(1, "Преступление и наказание", "Ф.М. Достоевский", 1866, "в наличии"),
-            Book(2, "Война и мир", "Л.Н. Толстой", 1869, "в наличии")
+            Book(2, "Война и мир", "Л.Н. Толстой", 1869, "в наличии"),
+            Book(3, "Красная шапочка", "Шарль Перро", 1697, "выдана")
         ]
         save_books_to_file(self.books)
 
     def test_load_books(self):
         loaded_books = load_books_from_file()
-        self.assertEqual(len(loaded_books), 2)
+        self.assertEqual(len(loaded_books), 3)
 
     def test_delete_book(self):
         initial_count = len(load_books_from_file())

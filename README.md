@@ -1,2 +1,9 @@
-# library
-Development of a library management system
+# Система управления библиотекой
+## Установка
+
+1. Убедитесь, что у вас установлен Python 3.6 или выше.
+2. Клонируйте репозиторий https://github.com/PNAleksandrov/library
+3. Активируйте виртуальное окружение source .venv/bin/activate (для linux)
+4. В корневой папке запустите команду  `pytest test_library.py`
+5. После теста в корневой папке запустите команду `python main.py`
+6. Наслаждайтесь использованием.

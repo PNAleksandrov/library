@@ -25,8 +25,11 @@ def main():
             year = int(input("Введите год издания: "))
             add_book(title, author, year)
         elif choice == '2':
-            id = int(input("Введите ID книги для удаления: "))
-            delete_book(id)
+            try:
+                id = int(input("Введите ID книги для удаления: "))
+                delete_book(id)
+            except ValueError as e:
+                print(e)
         elif choice == '3':
             query = input("Введите запрос для поиска: ")
             found_books = find_books(query)
