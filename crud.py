@@ -8,7 +8,7 @@ def save_books_to_file(books: List[Book]) -> None:
     Сохраняет новую(измененную) книгу в файл
     """
     with open('books.json', 'w') as file:
-        json.dump([book.to_dict() for book in books], file)
+        json.dump([book.to_dict() for book in books], file, ensure_ascii=False, indent=4)
 
 
 def load_books_from_file() -> List[Book]:
